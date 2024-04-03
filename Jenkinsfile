@@ -4,6 +4,7 @@ pipeline {
     stage('Test') {
       steps {
         echo 'hi '
+        sh '"maven test"'
       }
     }
 
