@@ -4,7 +4,6 @@ pipeline {
     stage('Test') {
       steps {
         echo 'hi '
-        sh '"maven test"'
       }
     }
 
@@ -22,7 +21,30 @@ pipeline {
 
     stage('deploy-on-prod') {
       steps {
-        echo 'he deploy-prod'
+        echo 'he deploy-prodc'
+      }
+    }
+
+    stage('Post-actions') {
+      parallel {
+        stage('Post-actions') {
+          steps {
+            echo 'always run'
+          }
+        }
+
+        stage('success-post') {
+          steps {
+            echo 'successfull'
+          }
+        }
+
+        stage('failure') {
+          steps {
+            echo 'failed one'
+          }
+        }
+
       }
     }
 
